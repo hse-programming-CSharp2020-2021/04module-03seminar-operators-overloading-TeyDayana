@@ -27,18 +27,34 @@ namespace Task04
     class Celcius
     {
         public double Gradus { get; set; }
+
+        public static explicit operator Celcius(Fahrenheit fahr)
+            => new Celcius { Gradus = (double)5 / 9 * (fahr.Gradus - 32) };
+
+        public override string ToString() => String.Format("{0:.00}", Gradus);
     }
 
     class Fahrenheit
     {
         public double Gradus { get; set; }
+
+        public static explicit operator Fahrenheit(Celcius celc)
+            => new Fahrenheit { Gradus = (double)9 / 5 * celc.Gradus + 32 };
+
+        public override string ToString() => String.Format("{0:.00}", Gradus);
     }
 
     class MainClass
     {
         public static void Main(string[] args)
         {
+            int fahr = int.Parse(Console.ReadLine());
+            Fahrenheit f = new Fahrenheit { Gradus = fahr };
+            Console.WriteLine((Celcius)f);
 
+            int celc = int.Parse(Console.ReadLine());
+            Celcius c = new Celcius { Gradus = celc };
+            Console.WriteLine((Fahrenheit)c);
         }
     }
 }
