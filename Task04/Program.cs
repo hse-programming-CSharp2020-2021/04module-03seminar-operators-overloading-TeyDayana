@@ -31,7 +31,7 @@ namespace Task04
         public static explicit operator Celcius(Fahrenheit fahr)
             => new Celcius { Gradus = (double)5 / 9 * (fahr.Gradus - 32) };
 
-        public override string ToString() => String.Format("{0:.00}", Gradus);
+        public override string ToString() => String.Format("{0:.00}", Gradus).Replace(".", ",");
     }
 
     class Fahrenheit
@@ -41,7 +41,7 @@ namespace Task04
         public static explicit operator Fahrenheit(Celcius celc)
             => new Fahrenheit { Gradus = (double)9 / 5 * celc.Gradus + 32 };
 
-        public override string ToString() => String.Format("{0:.00}", Gradus);
+        public override string ToString() => String.Format("{0:.00}", Gradus).Replace(".", ",");
     }
 
     class MainClass
