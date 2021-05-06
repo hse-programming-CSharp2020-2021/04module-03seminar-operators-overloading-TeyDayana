@@ -54,9 +54,7 @@ namespace Task01
                 sandwich = bread + butter;
             }
             catch (ArgumentException)
-            {
-                Console.WriteLine("error");
-            }
+            { Console.WriteLine("error"); return; }
             Console.WriteLine(sandwich.Weight);
         }
     }
