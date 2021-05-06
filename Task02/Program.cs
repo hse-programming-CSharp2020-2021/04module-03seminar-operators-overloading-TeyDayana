@@ -37,7 +37,8 @@ namespace Task02
         {
             decimal pop = st1.Population + st2.Population;
             decimal ar = st1.Area + st2.Area;
-            if (pop < 0 || ar <= 0) throw new ArgumentException();
+            if (pop < 0 || ar <= 0 || st1.Population < 0 || st2.Population < 0 || st1.Area <= 0 || st1.Area <= 0) 
+                throw new ArgumentException();
             return new State { Population = pop, Area = ar };
         }
 
