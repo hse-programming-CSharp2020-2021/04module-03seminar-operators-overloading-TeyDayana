@@ -43,6 +43,8 @@ namespace Task02
 
         public static bool operator <(State st1, State st2) => st1.Population / st1.Area < st2.Population / st2.Area;
         public static bool operator >(State st1, State st2) => st1.Population / st1.Area > st2.Population / st2.Area;
+
+        public override string ToString() => Population + " " + Area;
     }
 
     class MainClass
