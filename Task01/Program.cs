@@ -28,7 +28,7 @@ namespace Task01
         public static Sandwich operator +(Bread br, Butter bt)
         {
             int w = br.Weight + bt.Weight;
-            if (w < 0) throw new ArgumentException();
+            if (w <= 0) throw new ArgumentException();
             return new Sandwich { Weight = w };
         }
     }
