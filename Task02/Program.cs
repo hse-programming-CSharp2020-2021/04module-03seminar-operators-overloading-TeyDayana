@@ -41,8 +41,8 @@ namespace Task02
             return new State { Population = pop, Area = ar };
         }
 
-        public static bool operator <(State st1, State st2) => st1.Population / st1.Area < st2.Population / st2.Area;
-        public static bool operator >(State st1, State st2) => st1.Population / st1.Area > st2.Population / st2.Area;
+        public static bool operator <(State st1, State st2) => st1.Area / st1.Population < st2.Area / st2.Population;
+        public static bool operator >(State st1, State st2) => st1.Area / st1.Population > st2.Area / st2.Population;
 
         public override string ToString() => Area + " " + Population;
     }
