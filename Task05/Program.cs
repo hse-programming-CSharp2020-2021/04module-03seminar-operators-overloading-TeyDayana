@@ -29,10 +29,25 @@ namespace Task05
     class Dollar
     {
         public decimal Sum { get; set; }
+
+        public static implicit operator Dollar(Euro e)
+        {
+            if (e.Sum < 0) throw new ArgumentException();
+            return new Dollar { Sum = e.Sum * (decimal)1.14 };
+        }
+
+        public override string ToString() => String.Format("{0:.00}", Sum).Replace(".", ",");
     }
     class Euro
     {
         public decimal Sum { get; set; }
+
+        public static explicit operator Euro(Dollar d)
+        {
+            if (d.Sum < 0) throw new ArgumentException();
+            return new Euro { Sum = d.Sum / (decimal)1.14 };
+        }
+        public override string ToString() => String.Format("{0:.00}", Sum).Replace(".", ",");
     }
 
     class MainClass
@@ -41,7 +56,13 @@ namespace Task05
         {
             try
             {
+                int d = int.Parse(Console.ReadLine());
+                Dollar dollar = new Dollar { Sum = d };
+                Console.WriteLine((Euro)dollar);
 
+                int e = int.Parse(Console.ReadLine());
+                Euro euro = new Euro { Sum = e };
+                Console.WriteLine((Dollar)euro);
             }
             catch (ArgumentException)
             {
