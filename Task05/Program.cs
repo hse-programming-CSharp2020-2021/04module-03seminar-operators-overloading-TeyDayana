@@ -36,7 +36,11 @@ namespace Task05
             return new Dollar { Sum = e.Sum * (decimal)1.14 };
         }
 
-        public override string ToString() => String.Format("{0:.00}", Sum).Replace(".", ",");
+        public override string ToString()
+        {
+            if (Sum == 0) return "0,00";
+            return String.Format("{0:.00}", Sum).Replace(".", ",");
+        }
     }
     class Euro
     {
@@ -47,7 +51,11 @@ namespace Task05
             if (d.Sum < 0) throw new ArgumentException();
             return new Euro { Sum = d.Sum / (decimal)1.14 };
         }
-        public override string ToString() => String.Format("{0:.00}", Sum).Replace(".", ",");
+        public override string ToString()
+        {
+            if (Sum == 0) return "0,00";
+            return String.Format("{0:.00}", Sum).Replace(".", ",");
+        }
     }
 
     class MainClass
